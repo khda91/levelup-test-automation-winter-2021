@@ -1,6 +1,6 @@
-package ru.levelup.qa.at.java.oop.inheretance;
+package ru.levelup.qa.at.java.oop.incapsulation;
 
-public class Circle extends Shape {
+public class Circle extends Shape implements Drawable, Movable {
 
     private double radius;
 
@@ -57,5 +57,20 @@ public class Circle extends Shape {
                 ", y=" + getY() +
                 ", radius=" + radius +
                 '}';
+    }
+
+    @Override
+    public void draw() {
+        System.out.println("draw -> " + this.getClass().getName());
+    }
+
+    @Override
+    public void moveByX(double x) {
+        this.setX(this.getX() + x);
+    }
+
+    @Override
+    public void moveByY(double y) {
+        this.setY(this.getY() + y);
     }
 }

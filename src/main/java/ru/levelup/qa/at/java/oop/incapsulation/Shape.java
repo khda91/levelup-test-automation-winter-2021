@@ -1,6 +1,4 @@
-package ru.levelup.qa.at.java.oop.inheretance;
-
-import java.util.Objects;
+package ru.levelup.qa.at.java.oop.incapsulation;
 
 public abstract class Shape {
 
@@ -8,6 +6,10 @@ public abstract class Shape {
     private double y;
 
     public abstract double square();
+
+    public void perimetr() {
+        System.out.println("Perimeter");
+    }
 
     public double getX() {
         return x;
@@ -23,6 +25,10 @@ public abstract class Shape {
 
     public void setY(double y) {
         this.y = y;
+    }
+
+    public static void printSMth(String str) {
+        System.out.println(Shape.class.getCanonicalName() + " -> " + str);
     }
 
     @Override
