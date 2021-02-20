@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Calculator Suite Combine Part 1">
+
+    <test name="Test Several Calculator Methods CalculatorSuiteCombinePart1">
+        <classes>
+            <class name="ru.levelup.qa.at.unit.tests.CalculatorTest">
+                <methods>
+                    <include name="calculatorSumTest"/>
+                </methods>
+            </class>
+            <class name="ru.levelup.qa.at.unit.tests.CalculatorDivideTest">
+                <methods>
+                    <exclude name="calculatorDivide2Test"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>

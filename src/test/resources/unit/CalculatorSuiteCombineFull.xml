@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Calculator Suite Combine Full">
+
+    <suite-files>
+        <suite-file path="CalculatorSuiteCombinePart1.xml"/>
+        <suite-file path="CalculatorSuiteCombinePart2.xml"/>
+    </suite-files>
+
+</suite>

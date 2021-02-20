@@ -30,4 +30,28 @@ public class CalculatorDivideTest extends CalculatorBaseTest {
         System.out.println("calculatorDivide -> finished");
     }
 
+    @Test
+    void calculator1Divide2Test() {
+        System.out.println("calculator1Divide2Test -> started");
+        double actualSum = calculator.divide(4, 2);
+        assertEquals(actualSum, 2.0, 0.0001);
+        System.out.println("calculator1Divide2Test -> finished");
+    }
+
+    @Test
+    void calculator2Divide2Test() {
+        System.out.println("calculator2Divide2Test -> started");
+        double actualSum = calculator.divide(4, 2);
+        assertEquals(actualSum, 2.0, 0.0001);
+        System.out.println("calculator2Divide2Test -> finished");
+    }
+
+    @Test
+    void calculator3Divide2Test() {
+        System.out.println("calculator3Divide2Test -> started");
+        double actualSum = calculator.divide(4, 2);
+        assertEquals(actualSum, 2.0, 0.0001);
+        System.out.println("calculator3Divide2Test -> finished");
+    }
+
 }

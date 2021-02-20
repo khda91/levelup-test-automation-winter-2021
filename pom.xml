@@ -12,6 +12,11 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
 
+        <suiteXml>${project.basedir}/src/test/resources/unit/SimpleCalculatorSuite.xml</suiteXml>
+
+        <testng.version>7.3.0</testng.version>
+        <junit.version>4.13.1</junit.version>
+
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
@@ -21,14 +26,14 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.3.0</version>
+            <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.1</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -53,6 +58,13 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suiteXml}</suiteXmlFile>
+<!--                        <suiteXmlFile>${project.basedir}/src/test/resources/unit/SimpleCalculatorSuite.xml</suiteXmlFile>-->
+<!--                        <suiteXmlFile>${project.basedir}/src/test/resources/unit/SimpleCalculatorSuite.xml</suiteXmlFile>-->
+<!--                        <suiteXmlFile>${project.basedir}/src/test/resources/unit/SimpleCalculatorSuite.xml</suiteXmlFile>-->
+<!--                        <suiteXmlFile>${project.basedir}/src/test/resources/unit/SimpleCalculatorSuite.xml</suiteXmlFile>-->
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
 

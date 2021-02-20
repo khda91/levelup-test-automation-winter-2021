@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Calculator Suite Suite Annotation 1">
+
+    <test name="Test Calculator Suite Suite Annotation 1">
+        <classes>
+            <class name="ru.levelup.qa.at.unit.tests.CalculatorSuiteAnnotation1Test"/>
+            <class name="ru.levelup.qa.at.unit.tests.CalculatorSuiteAnnotation2Test"/>
+            <class name="ru.levelup.qa.at.unit.tests.CalculatorSuiteAinotation3Test"/>
+        </classes>
+    </test>
+
+</suite>

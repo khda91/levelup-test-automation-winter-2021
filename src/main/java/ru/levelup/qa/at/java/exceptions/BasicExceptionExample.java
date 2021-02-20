@@ -67,4 +67,21 @@ public class BasicExceptionExample {
         }
     }
 
+    public static void printStringToFileWithException(String printString) throws IOException {
+        PrintWriter out = null;
+
+        try {
+            out = new PrintWriter(new FileWriter("out.txt"));
+            System.out.println(printString.length());
+            for (int i = 0; i < 100; i++) {
+                out.println(printString);
+            }
+        } finally {
+            System.out.println("Finally");
+            if (out != null) {
+                out.close();
+            }
+        }
+    }
+
 }

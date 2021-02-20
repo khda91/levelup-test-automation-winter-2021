@@ -9,7 +9,7 @@ import ru.levelup.qa.at.unit.tests.junit.categories.Category2;
 import static org.junit.Assert.assertEquals;
 
 
-public class Junit4IT {
+public class Junit4AdditionalIT {
 
     @Test
     @Category(Category1.class)

@@ -1,0 +1,44 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<!-- @BeforeSuite -->
+<suite name="Simple Calculator Suite">
+
+    <!-- @BeforeTest -->
+    <test name="Test Calculator Suite">
+        <classes>
+            <!-- @BeforeClass -->
+            <class name="ru.levelup.qa.at.unit.tests.CalculatorTest"/>
+            <!-- @AfterClass -->
+            <!-- @BeforeClass -->
+            <class name="ru.levelup.qa.at.unit.tests.CalculatorDivideTest"/>
+            <!-- @AfterClass -->
+        </classes>
+    </test>
+    <!-- @AfterTest-->
+
+    <!-- @BeforeTest -->
+    <test name="Test Several Calculator Methods">
+        <classes>
+            <!-- @BeforeClass -->
+            <class name="ru.levelup.qa.at.unit.tests.CalculatorTest">
+                <methods>
+                    <!-- @BeforeMethod -->
+                    <include name="calculatorSumTest"/>
+                    <!-- @AfterMethod -->
+                </methods>
+            </class>
+            <!-- @AfterClass -->
+            <!-- @BeforeClass -->
+            <class name="ru.levelup.qa.at.unit.tests.CalculatorDivideTest">
+                <methods>
+                    <!-- @BeforeMethod -->
+                    <exclude name="calculatorDivide2Test"/>
+                    <!-- @AfterMethod -->
+                </methods>
+            </class>
+            <!-- @AfterClass -->
+        </classes>
+    </test>
+    <!-- @AfterTest -->
+
+</suite>
+<!-- @AfterSuite -->
