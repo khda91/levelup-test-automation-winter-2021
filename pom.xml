@@ -17,6 +17,7 @@
         <testng.version>7.3.0</testng.version>
         <junit.version>4.13.1</junit.version>
         <selenium-java.version>3.141.59</selenium-java.version>
+        <webdrivermanager.version>4.3.1</webdrivermanager.version>
 
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
@@ -47,7 +48,7 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>4.3.1</version>
+            <version>${webdrivermanager.version}</version>
         </dependency>
     </dependencies>
 
