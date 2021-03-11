@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Simple Selenium Script Suite">
+
+    <test name="Selenium Script">
+        <classes>
+            <class name="ru.levelup.qa.at.selenuim.page.object.ScriptingScenarioSampleTest"/>
+        </classes>
+    </test>
+
+</suite>

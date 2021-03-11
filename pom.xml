@@ -18,11 +18,25 @@
         <junit.version>4.13.1</junit.version>
         <selenium-java.version>3.141.59</selenium-java.version>
         <webdrivermanager.version>4.3.1</webdrivermanager.version>
+        <hamcrest.version>2.2</hamcrest.version>
 
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>chrome-smoke</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <browser.name>chrome</browser.name>
+                <suiteXml>${project.basedir}/src/test/resources/selenium/suites/SampleSeleniumScriptSuite.xml</suiteXml>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
@@ -50,6 +64,13 @@
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>${hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -71,7 +92,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
-                    <testFailureIgnore>true</testFailureIgnore>
+<!--                    <testFailureIgnore>true</testFailureIgnore>-->
+                    <argLine>-Dsite.url=https://yadex.ru</argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>${suiteXml}</suiteXmlFile>
 <!--                        <suiteXmlFile>${project.basedir}/src/test/resources/unit/SimpleCalculatorSuite.xml</suiteXmlFile>-->
@@ -79,13 +101,20 @@
 <!--                        <suiteXmlFile>${project.basedir}/src/test/resources/unit/SimpleCalculatorSuite.xml</suiteXmlFile>-->
 <!--                        <suiteXmlFile>${project.basedir}/src/test/resources/unit/SimpleCalculatorSuite.xml</suiteXmlFile>-->
                     </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <browser.name>${browser.name}</browser.name>
+                    </systemPropertyVariables>
                 </configuration>
+<!--                Паттерн запуска тестов: **/.+Test$.java-->
+<!--                Паттерн запуска тестов: **/^Test.+.java-->
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${maven-failsafe-plugin.version}</version>
+                <!--                Паттерн запуска тестов: **/.+IT$.java-->
+                <!--                Паттерн запуска тестов: **/^IT.+.java-->
                 <executions>
                     <execution>
                         <id>int-test</id>
