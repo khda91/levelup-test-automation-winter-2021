@@ -19,6 +19,7 @@
         <selenium-java.version>3.141.59</selenium-java.version>
         <webdrivermanager.version>4.3.1</webdrivermanager.version>
         <hamcrest.version>2.2</hamcrest.version>
+        <lombok.version>1.18.16</lombok.version>
 
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
@@ -34,6 +35,16 @@
             <properties>
                 <browser.name>chrome</browser.name>
                 <suiteXml>${project.basedir}/src/test/resources/selenium/suites/SampleSeleniumScriptSuite.xml</suiteXml>
+                <junitSuite>**/Junit4*</junitSuite>
+            </properties>
+        </profile>
+        <profile>
+            <id>junit-ex</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <junit.suite>**/Junit4*</junit.suite>
             </properties>
         </profile>
     </profiles>
@@ -71,6 +82,13 @@
             <version>${hamcrest.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -92,6 +110,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
+                    <skipTests>true</skipTests>
 <!--                    <testFailureIgnore>true</testFailureIgnore>-->
                     <argLine>-Dsite.url=https://yadex.ru</argLine>
                     <suiteXmlFiles>
@@ -115,6 +134,12 @@
                 <version>${maven-failsafe-plugin.version}</version>
                 <!--                Паттерн запуска тестов: **/.+IT$.java-->
                 <!--                Паттерн запуска тестов: **/^IT.+.java-->
+                <configuration>
+<!--                    <testFailureIgnore>true</testFailureIgnore>-->
+                    <includes>
+                        <include>${junit.suite}</include>
+                    </includes>
+                </configuration>
                 <executions>
                     <execution>
                         <id>int-test</id>

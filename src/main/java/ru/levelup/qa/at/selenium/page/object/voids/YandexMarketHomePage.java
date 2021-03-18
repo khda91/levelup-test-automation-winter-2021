@@ -1,12 +1,10 @@
-package ru.levelup.qa.at.selenium.page.object.simple;
+package ru.levelup.qa.at.selenium.page.object.voids;
 
-import lombok.NonNull;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
-import java.util.Objects;
 
 public class YandexMarketHomePage extends AbstractYandexMarketPage {
 
@@ -19,21 +17,16 @@ public class YandexMarketHomePage extends AbstractYandexMarketPage {
         super(driver);
     }
 
-    public YandexMarketHomePage open() {
+    public void open() {
         driver.navigate().to(URL);
-        return this;
     }
 
-    public YandexMarketCategoryPage openCategory(/*@NonNull */String category) {
-        if (Objects.isNull(category)) {
-            throw new NullPointerException("category is marked non-null but is null");
-        }
+    public void openCategory(String category) {
         for (WebElement categoryLink : categoryLinks) {
             if (categoryLink.getText().contains(category)) {
                 categoryLink.click();
                 break;
             }
         }
-        return new YandexMarketCategoryPage(driver);
     }
 }
