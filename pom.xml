@@ -20,6 +20,7 @@
         <webdrivermanager.version>4.3.1</webdrivermanager.version>
         <hamcrest.version>2.2</hamcrest.version>
         <lombok.version>1.18.16</lombok.version>
+        <aspectj.version>1.8.10</aspectj.version>
 
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
@@ -95,6 +96,13 @@
             <artifactId>rest-assured</artifactId>
             <version>4.3.3</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.13.8</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -142,10 +150,23 @@
                 <!--                Паттерн запуска тестов: **/^IT.+.java-->
                 <configuration>
 <!--                    <testFailureIgnore>true</testFailureIgnore>-->
-                    <includes>
-                        <include>${junit.suite}</include>
-                    </includes>
+<!--                    <includes>-->
+<!--                        <include>${junit.suite}</include>-->
+<!--                    </includes>-->
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${project.basedir}/src/test/resources/selenium/suites/AllureSeleniumScriptSuite.xml</suiteXmlFile>
+                    </suiteXmlFiles>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
                 <executions>
                     <execution>
                         <id>int-test</id>
@@ -162,6 +183,15 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.10.0</version>
+<!--                <configuration>-->
+<!--                    <resultsDirectory>${project.basedir}/allure-results</resultsDirectory>-->
+<!--                </configuration>-->
             </plugin>
         </plugins>
     </build>
