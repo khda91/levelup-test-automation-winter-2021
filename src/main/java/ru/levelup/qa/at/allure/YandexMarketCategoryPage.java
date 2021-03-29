@@ -1,5 +1,6 @@
 package ru.levelup.qa.at.allure;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,6 +12,7 @@ public class YandexMarketCategoryPage extends AbstractYandexMarketPage {
         super(driver);
     }
 
+    @Step("Открываем подкатегорию: {subCategory}")
     public YandexMarketProductsPage openSubCategory(String subCategory) {
         new WebDriverWait(driver, 5).until(ExpectedConditions
                 .elementToBeClickable(By.linkText(subCategory))).click();

@@ -1,5 +1,6 @@
 package ru.levelup.qa.at.allure;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,11 +18,13 @@ public class YandexMarketHomePage extends AbstractYandexMarketPage {
         super(driver);
     }
 
+    @Step("Открытие главной страницы Яндекс Маркета")
     public YandexMarketHomePage open() {
         driver.navigate().to(URL);
         return this;
     }
 
+    @Step("Открываем категорию: {0}")
     public YandexMarketCategoryPage openCategory(String category) {
         for (WebElement categoryLink : categoryLinks) {
             if (categoryLink.getText().contains(category)) {

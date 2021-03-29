@@ -1,5 +1,6 @@
 package ru.levelup.qa.at.allure;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -25,6 +26,7 @@ public class YandexMarketProductsPage extends AbstractYandexMarketPage {
         super(driver);
     }
 
+    @Step("Добавляем {productNumber} товар к сравнению")
     public String addProductToCompare(int productNumber) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         WebElement addToCompare = wait.until(presenceOfNestedElementLocatedBy(productList.get(productNumber),
@@ -38,6 +40,7 @@ public class YandexMarketProductsPage extends AbstractYandexMarketPage {
                 .findElement(xpath(".//div//child::h3[@data-zone-name='title']")))).getText().trim();
     }
 
+    @Step("Нажать на кнопку \"Сравнить\"")
     public YandexMarketComparePage clickCompareButton() {
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(compareButton)).click();
         return new YandexMarketComparePage(driver);
