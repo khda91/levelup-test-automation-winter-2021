@@ -29,6 +29,22 @@ public class SimpleSeleniumTest {
     }
 
     @Test
+    public void simpleOpenYandexMarketPageChromeDriverFailedTest() {
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/selenium/driver/chromedriver");
+        var expectedTitle = "Яндекс.Маркет — выбор и покупка товаров из интернет-магазинов";
+//        String expectedTitle = "Яндекс.Маркет — выбор и покупка товаров из проверенных интернет-магазинов";
+
+        WebDriver driver = new ChromeDriver();
+        driver.navigate().to("https://market.yandex.ru");
+
+//        expectedTitle = 5; - не работает. В java нет динамической типизации
+
+        sleep(4000);
+        assertEquals(driver.getTitle(), expectedTitle);
+        driver.quit();
+    }
+
+    @Test
     public void simpleOpenYandexMarketPageFirefoxDriverTest() {
         System.setProperty("webdriver.gecko.driver", "src/test/resources/selenium/driver/geckodriver");
         var expectedTitle = "Яндекс.Маркет — выбор и покупка товаров из проверенных интернет-магазинов";
