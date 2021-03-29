@@ -1,6 +1,10 @@
 package ru.levelup.qa.at.allure;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.ITestContext;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import ru.levelup.qa.at.allure.listeners.AllureListener;
@@ -16,6 +20,14 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 
 @Listeners({AllureListener.class})
 public class PageObjectFluentTest extends AbstractSeleniumBaseTest {
+
+    @BeforeMethod
+    @Override
+    public void setUp(ITestContext context) {
+        ChromeOptions options = new ChromeOptions().setHeadless(true);
+        driver = new ChromeDriver(options);
+        context.setAttribute("driver", driver);
+    }
 
     @Test
     public void yandexMarketPageObjectTest() {
